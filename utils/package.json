@@ -1,0 +1,8 @@
+{
+  "name": "@gk/utils",
+  "version": "1.0.1",
+  "main": "index.ts",
+  "keywords": ["utils"],
+  "author": "geeker",
+  "license": "MIT"
+}

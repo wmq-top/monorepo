@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "node_modules": true,
+    "pnpm-lock.yaml": true,
+    "pnpm-workspace.yaml": true,
+    "LICENSE": true,
+    "api/package.json": true
+  },
+}

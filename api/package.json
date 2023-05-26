@@ -1,0 +1,8 @@
+{
+  "name": "@gk/api",
+  "version": "1.0.1",
+  "main": "index.ts",
+  "keywords": ["api"],
+  "author": "geeker",
+  "license": "MIT"
+}

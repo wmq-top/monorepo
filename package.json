@@ -1,0 +1,31 @@
+{
+  "name": "monorepo",
+  "version": "1.0.1",
+  "description": "",
+  "main": "components/index.ts",
+  "private": false,
+  "keywords": [
+    "monorepo"
+  ],
+  "scripts": {
+    "t": "esno utils/index.test.ts",
+    "b": "vite build"
+  },
+  "author": "geeker",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.2.4",
+    "axios": "^1.4.0",
+    "vite": "^4.3.9",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "eslint": "^8.41.0",
+    "esno": "^0.16.3",
+    "typescript": "^5.0.4",
+    "vite-plugin-dts": "^2.3.0"
+  }
+}
