@@ -6,7 +6,7 @@
   "keywords": [
     "components"
   ],
-  "author": "geeker",
+  "author": "geeker_q",
   "license": "MIT",
   "dependencies": {
     "@gk/utils": "workspace:^1.0.1"

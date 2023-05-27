@@ -16,5 +16,5 @@
 
 ### ❤️  Contributors
 
-- Geeker <979110555@qq.com>
+- murry_qx <979110555@qq.com>
 
