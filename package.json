@@ -2,7 +2,7 @@
   "name": "@geeker-q/components",
   "version": "1.0.1",
   "description": "",
-  "main": "components/index.ts",
+  "main": "components/components/index.mjs",
   "type": "module",
   "private": false,
   "keywords": [
@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "t": "esno utils/index.test.ts",
-    "b": "vite build"
+    "b": "vite build",
+    "rl": "bumpp",
+    "cl": "changelogen --output CHANGELOG.md"
   },
   "repository": {
     "type": "git",

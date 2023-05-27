@@ -1,0 +1,11 @@
+node_modules
+packages
+vite.config.ts
+.gitignore
+api
+.vscode
+.git
+.tsconfig.json
+.tsconfig.node.json
+.eslintrc.cjs
+.eslintignore
