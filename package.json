@@ -4,7 +4,6 @@
   "description": "",
   "main": "components/components/index.mjs",
   "type": "module",
-  "private": false,
   "keywords": [
     "monorepo"
   ],
