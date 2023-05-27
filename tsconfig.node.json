@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
   },
-  // "include": ["vite.config.ts", "vite.config.preprocessor.ts"]
 }

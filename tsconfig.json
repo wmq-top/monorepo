@@ -12,10 +12,13 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "types": ["ESNext"]
   },
   "include": [
-    ""
+    "components/**/*.ts",
+    "components/*.ts",
+    "api/*.ts",
+    "api/**/*.ts",
+    "utils/*.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

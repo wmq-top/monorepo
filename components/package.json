@@ -1,0 +1,14 @@
+{
+  "name": "@gk/components",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.ts",
+  "keywords": [
+    "components"
+  ],
+  "author": "geeker",
+  "license": "MIT",
+  "dependencies": {
+    "@gk/utils": "workspace:^1.0.1"
+  }
+}

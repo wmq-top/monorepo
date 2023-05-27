@@ -5,6 +5,15 @@
     "pnpm-lock.yaml": true,
     "pnpm-workspace.yaml": true,
     "LICENSE": true,
-    "api/package.json": true
+    "api/package.json": true,
+    "components/node_modules": true,
+    ".eslintignore": true,
+    ".eslintrc.cjs": true,
+    "utils/package.json": true,
+    "tsconfig.json": true,
+    "tsconfig.node.json": true
   },
+  "cSpell.words": [
+    "endregion"
+  ],
 }
