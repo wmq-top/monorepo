@@ -1,5 +1,5 @@
 {
-  "name": "monorepo",
+  "name": "@geeker-q/components",
   "version": "1.0.1",
   "description": "",
   "main": "components/index.ts",
@@ -12,11 +12,17 @@
     "t": "esno utils/index.test.ts",
     "b": "vite build"
   },
-  "author": "geeker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmq-top/monorepo.git"
+  },
+  "author": "geeker_q",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^20.2.4",
     "axios": "^1.4.0",
+    "bumpp": "^9.1.0",
+    "changelogen": "^0.5.3",
     "vite": "^4.3.9",
     "vue": "^3.3.4"
   },
