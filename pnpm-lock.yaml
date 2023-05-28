@@ -50,6 +50,7 @@ importers:
 
   packages/playground:
     specifiers:
+      '@geeker-q/components': workspace:^1.0.2
       '@gk/components': workspace:^1.0.1
       '@vitejs/plugin-vue': ^4.1.0
       typescript: ^5.0.2
@@ -57,6 +58,7 @@ importers:
       vue: ^3.2.47
       vue-tsc: ^1.4.2
     dependencies:
+      '@geeker-q/components': link:../..
       '@gk/components': link:../../components
       vue: 3.3.4
     devDependencies:
@@ -1111,7 +1113,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.3.9_eismugumrzkvjcd3zdfhdvyqsq
+      vite: 4.3.9
       vue: 3.3.4
     dev: true
 
