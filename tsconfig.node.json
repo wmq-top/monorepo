@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
     "composite": true,
+    "skipLibCheck": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
-    "target": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   },
+  "include": ["packages/**/vite.config.ts"]
 }

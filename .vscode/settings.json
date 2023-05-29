@@ -10,8 +10,8 @@
     ".eslintignore": true,
     ".eslintrc.cjs": true,
     "utils/package.json": true,
-    "tsconfig.json": true,
-    "tsconfig.node.json": true
+    // "tsconfig.json": true,
+    // "tsconfig.node.json": true
   },
   "cSpell.words": [
     "endregion"
