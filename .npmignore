@@ -2,10 +2,13 @@ node_modules
 packages
 vite.config.ts
 .gitignore
+components/node_modules
 api
+utils
 .vscode
 .git
-.tsconfig.json
-.tsconfig.node.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
 .eslintrc.cjs
 .eslintignore
