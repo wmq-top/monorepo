@@ -2,7 +2,7 @@
   "name": "@geeker-q/components",
   "version": "1.0.6",
   "description": "",
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.es.js",
   "types": "./dist/components/index.d.ts",
   "type": "module",
   "keywords": [
