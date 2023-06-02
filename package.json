@@ -1,6 +1,6 @@
 {
   "name": "@geeker-q/components",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "./dist/index.es.js",
   "types": "./dist/components/index.d.ts",
