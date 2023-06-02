@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.8...main
+
+[compare changes](https://github.com/wmq-top/monorepo/compare/v1.0.8...main)
+
+
+### 🚀 Enhancements
+
+  - Add step tips ([84af5be](https://github.com/wmq-top/monorepo/commit/84af5be))
+
+### ❤️  Contributors
+
+- Geeker <979110555@qq.com>
+
 ## ...main
 
 
