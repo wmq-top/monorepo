@@ -3,6 +3,45 @@
   width:auto;
   padding: 0.5rem;
 }
+.step-tip-main {
+  position: relative;
+}
 .step-tip-tip {
-  position: absolute;
+  position: fixed;
+  word-wrap: word-break;
+  word-break: break-all;
+  background-color: white;
+  border: 1px solid #2879ff;
+  max-width: 400px;
+  min-width: 200px;
+  z-index: 9999;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+.top-index {
+  z-index: 9999;
+}
+.step-bottom-btn {
+  margin-top: 1rem;
+}
+.jump-btn {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.next-btn {
+  cursor: pointer;
+}
+.step-tip-content-active {
+  box-shadow: 0 0 5px skyblue;
+  cursor: pointer;
+  z-index: 99;
+}
+.global-mask {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.2);
 }
