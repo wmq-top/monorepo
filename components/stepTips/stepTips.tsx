@@ -152,7 +152,7 @@ const StepTips = defineComponent({
         <div class={`step-tip-main ${isActive.value ? 'top-index' : ''}`} ref={isActive.value ? contentBox : dartBox}>{slots.default?.()}</div>
         {isActive.value
           && <div class={`step-tip-tip step-tip-${position.value}`} style={tipBoxStyle.value} ref={tipsBox}>
-            {slots.tip?.() || <div>{text.value}</div>}
+            {slots.tip?.() || <div class={'text-content'}>{text.value}</div>}
             <div class={'step-bottom-btn'}>
               <Button size="small" class="jump-btn" type={'primary'} onClick={jumpAll}>跳过全部</Button>
               <Button size="small" class="next-btn" type={'primary'} onClick={nextFocus}>下一步</Button>
