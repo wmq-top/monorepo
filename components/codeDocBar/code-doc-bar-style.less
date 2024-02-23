@@ -1,0 +1,120 @@
+@box-border: 1px solid #f0f0f0;
+.hljs {
+  padding: 0.5rem;
+}
+pre.hljs {
+  margin: 0;
+  padding: 12px 2px 12px 40px;
+  border-radius: 5px !important;
+  position: relative;
+  font-size: 14px !important;
+  line-height: 22px !important;
+  overflow: hidden !important;
+  code {
+    display: block !important;
+    margin: 0 10px !important;
+    overflow-x: auto !important;
+    &::-webkit-scrollbar {
+      z-index: 11;
+      width: 8px;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      width: 8px;
+      background: #c1c1c1;
+    }
+    &::-webkit-scrollbar-corner,
+    &::-webkit-scrollbar-track {
+      background: #f2f3f5;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background: #f2f3f5;
+      width: 8px
+    }
+  }
+  .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 12px;
+    bottom: 12px;
+    left: 0;
+    font-size: 100%;
+    width: 40px;
+    text-align: center;
+    letter-spacing: -1px;
+    border-right: 1px solid #eaeaea;
+    user-select: none;
+    counter-reset: linenumber;
+    span {
+      pointer-events: none;
+      display: block;
+      counter-increment: linenumber;
+      &:before {
+        content: counter(linenumber);
+        color: #999;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  b.name {
+    position: absolute;
+    top: 6px;
+    right: 43px;
+    z-index: 10;
+    color: #999;
+    pointer-events: none;
+    display: none;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10;
+    font-size: 12px;
+    color: #5e5e5e;
+    cursor: pointer;
+    background-color: #e2e2e2;
+    border: 0;
+    border-radius: 4px;
+    padding: 2px 6px;
+    outline: none;
+    &:hover {
+      color: white;
+      background-color: #9d9d9d;
+    }
+  }
+}
+.tool-box-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  border-left: @box-border;
+  border-right: @box-border;
+  border-radius: 10px;
+  .tool-item-box {
+    display: flex;
+    width: 100%;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-top: @box-border;
+    border-bottom: @box-border;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: #1677ff
+    }
+  }
+
+  .inner-code-content {
+    text-align: left;
+    border-bottom: @box-border;
+    border-radius: 10px;
+  }
+}
