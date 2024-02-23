@@ -6,11 +6,11 @@
   "module": "dist/es/index.mjs",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "serve": "cd ./playground && pnpm add @weaiwork/nui-design && pnpm run dev",
+    "serve": "cd ./playground && pnpm add @geeker-q/component && pnpm run dev",
     "build": "vite build && mv ./dist/es/style.css ./dist && mv ./dist/lib/style.css ./dist",
-    "dev": "pnpm run build && cd ./playground && pnpm add @weaiwork/nui-design && pnpm run dev",
+    "dev": "pnpm run build && cd ./playground && pnpm add @geeker-q/component && pnpm run dev",
     "test": "esno ./test/index.ts",
-    "doc": "cd ./docs && pnpm add @weaiwork/nui-design && pnpm run dev --host 0.0.0.0",
+    "doc": "cd ./docs && pnpm add @geeker-q/component && pnpm run dev --host 0.0.0.0",
     "new": "cd ./docs && esno ./scripts/createComponent.ts"
   },
   "keywords": [],
