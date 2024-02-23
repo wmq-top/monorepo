@@ -9,7 +9,6 @@ interface RouterConfigData {
   children: Record<'label' | 'key', string>[]
 }
 
-// 方法2: 使用 ES6 中的解构赋值和 toUpperCase
 function capitalizeFirstLetter2(str) {
   const [first, ...rest] = str
   return first.toUpperCase() + rest.join('')
