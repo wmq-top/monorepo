@@ -7,10 +7,6 @@ function hashCode(str: string) {
     if (h > 2147483647)
       h %= t // java int溢出则取模
   }
-  /* var t = -2147483648 * 2;
-     while (h > 2147483647) {
-     h += t
-     } */
   return h
 }
 

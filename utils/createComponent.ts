@@ -9,7 +9,7 @@ interface RouterConfigData {
   children: Record<'label' | 'key', string>[]
 }
 
-function capitalizeFirstLetter2(str) {
+function capitalizeFirstLetter2(str: string) {
   const [first, ...rest] = str
   return first.toUpperCase() + rest.join('')
 }

@@ -1,5 +1,6 @@
 {
   "name": "@gk/utils",
+  "types": "./index.ts",
   "version": "1.0.1",
   "main": "index.ts",
   "keywords": ["utils"],

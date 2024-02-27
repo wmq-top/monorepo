@@ -13,5 +13,5 @@
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
   },
-  "include": ["packages/*", "packages/**/*.vue", "packages/**/*.tsx", "packages/**/*.ts", "packages/**/*.js"],
+  "include": ["packages/*", "packages/**/*.vue", "packages/**/*.tsx", "packages/**/*.ts", "packages/**/*.js", "utils/*"],
 }
