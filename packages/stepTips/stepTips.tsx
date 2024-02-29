@@ -20,7 +20,7 @@ const StepTips = defineComponent({
     // 针对所有的标准流布局盒子计算整个content-box的size和position
     const getStaticBoxRect = (domList: HTMLDivElement[]): RectType | null => {
       const positionList: RectType[] = []
-      const result: RectType = { left: Infinity, top: Infinity, right: -Infinity, bottom: -Infinity }
+      const result: RectType = { left: Number.POSITIVE_INFINITY, top: Number.POSITIVE_INFINITY, right: Number.NEGATIVE_INFINITY, bottom: Number.NEGATIVE_INFINITY }
       for (const item of domList) {
         if (getComputedStyle(item).position === 'static')
           positionList.push(item.getClientRects()[0])

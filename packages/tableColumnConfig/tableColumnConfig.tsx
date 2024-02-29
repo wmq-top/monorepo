@@ -1,9 +1,10 @@
-import { defineComponent, watch, ref, watchEffect, toRefs, PropType } from 'vue'
+import type { PropType } from 'vue'
+import { defineComponent, ref, toRefs, watch, watchEffect } from 'vue'
 import {
-  Card, Input, CheckboxGroup,
-  Checkbox, Divider, Row,
-  Col, Button,
-  Modal,
+  Button, Card, Checkbox,
+  CheckboxGroup, Col, Divider,
+  Input, Modal,
+  Row,
 } from 'ant-design-vue'
 import { SearchOutlined } from '@ant-design/icons-vue'
 import type { CustomColumnsType, CustomListType } from './table-column-config-types'
@@ -45,7 +46,7 @@ const ColumnsSetting = defineComponent({
     save: (data: any, columns: any) => true,
     close: () => true,
   },
-  // eslint-disable-next-line max-lines-per-function
+
   setup(props, { emit, expose, slots }) {
     const { visable } = toRefs(props)
     const searchValue = ref<string>()
@@ -69,27 +70,27 @@ const ColumnsSetting = defineComponent({
 
     // 生成所有节点key到详情的映射
     function onAllColumnsChange(columns: CustomColumnsType[]) {
-      columns.forEach(item => {
+      columns.forEach((item) => {
         columnsDetailMap.value.set(item.dataIndex, item)
       })
 
       const dfs = (column: CustomColumnsType[], groupName: string | null) => {
-        column.forEach(item => {
+        column.forEach((item) => {
           const currentGroup = item.groupName || groupName || '基本配置'
 
           // 如果不是子节点则向下递归
           if (item.children && item.children.length !== 0) {
             dfs(item.children, currentGroup)
             // 如果是叶子点则直接将其添加到选项分组中
-          } else {
+          }
+          else {
             keyInGroupMap.value.set(item.dataIndex, currentGroup)
 
             const currentGroupOptions = groupOptionsList.value[currentGroup] || []
 
             groupOptionsList.value[currentGroup] = [...currentGroupOptions, item]
-            if (item.alwaysShow) {
+            if (item.alwaysShow)
               alwaysShowList.value[currentGroup].push(item.dataIndex)
-            }
           }
         })
       }
@@ -101,7 +102,7 @@ const ColumnsSetting = defineComponent({
 
     // 初始化所有的分组为默认空值做v-model
     function buildGroupListAndOptions(columns: CustomColumnsType[]) {
-      columns.forEach(item => {
+      columns.forEach((item) => {
         groupCheckedList.value[item.groupName || '基本配置'] = []
         groupOptionsList.value[item.groupName || '基本配置'] = []
         checkAllList.value[item.groupName || '基本配置'] = false
@@ -116,7 +117,8 @@ const ColumnsSetting = defineComponent({
         const checkedList = groupOptionsList.value[key]!.map(item => item.dataIndex)
 
         groupCheckedList.value[key] = checkedList
-      } else {
+      }
+      else {
         groupCheckedList.value[key] = groupOptionsList.value[key]!.filter(item => item.alwaysShow).map(i => i.dataIndex)
       }
 
@@ -133,11 +135,11 @@ const ColumnsSetting = defineComponent({
 
     const customCheckboxList = ref<Record<string, CustomListType>>({})
     // customCheckBox 的选中和半选状态切换
-    const customCheckboxStatus = ref<Record<string, {checked: boolean, halfChecked: boolean}>>({})
+    const customCheckboxStatus = ref<Record<string, { checked: boolean; halfChecked: boolean }>>({})
 
     function onCheckedGroupChange(effectColumns: string[], bool: boolean) {
       if (bool) {
-        effectColumns.forEach(item => {
+        effectColumns.forEach((item) => {
           const group = keyInGroupMap.value.get(item)!
           const currentGroupSelectSet = new Set(groupCheckedList.value[group])
 
@@ -147,8 +149,9 @@ const ColumnsSetting = defineComponent({
           groupCheckedList.value[group] = groupOptionsList.value[group]
             .filter(colItem => currentGroupSelectSet.has(colItem.dataIndex)).map(i => i.dataIndex)
         })
-      } else if (!bool) {
-        effectColumns.forEach(item => {
+      }
+      else if (!bool) {
+        effectColumns.forEach((item) => {
           const group = keyInGroupMap.value.get(item)!
           const currentGroupSelectSet = new Set(groupCheckedList.value[group])
 
@@ -174,16 +177,16 @@ const ColumnsSetting = defineComponent({
     })
 
     watchEffect(() => {
-      Object.keys(groupCheckedList.value).forEach(key => {
-        indeterminateList.value[key] =
-        Boolean(groupCheckedList.value[key]?.length) &&
-        groupCheckedList.value[key]?.length < groupOptionsList.value[key].length
+      Object.keys(groupCheckedList.value).forEach((key) => {
+        indeterminateList.value[key]
+        = Boolean(groupCheckedList.value[key]?.length)
+        && groupCheckedList.value[key]?.length < groupOptionsList.value[key].length
 
         checkAllList.value[key] = groupCheckedList.value[key]?.length === groupOptionsList.value[key].length
       })
     })
 
-    function mergeCheckAndOptions(target: string[], options: string[]): {checked: boolean, halfChecked: boolean} {
+    function mergeCheckAndOptions(target: string[], options: string[]): { checked: boolean; halfChecked: boolean } {
       const result = {
         checked: false,
         halfChecked: false,
@@ -194,7 +197,8 @@ const ColumnsSetting = defineComponent({
         result.halfChecked = false
 
         return result
-      } else if (target.some(item => options.includes(item))) {
+      }
+      else if (target.some(item => options.includes(item))) {
         result.checked = false
         result.halfChecked = true
 
@@ -207,7 +211,7 @@ const ColumnsSetting = defineComponent({
     function updateCheckboxStatus() {
       const allCheckBox: any[] = []
 
-      Object.values(groupCheckedList.value).forEach(item => {
+      Object.values(groupCheckedList.value).forEach((item) => {
         allCheckBox.push(...item)
       })
       Object.values(customCheckboxList.value).forEach((data: any) => {
@@ -228,28 +232,27 @@ const ColumnsSetting = defineComponent({
 
     const setPropsCols = (columns: CustomColumnsType[], type: 'default' | 'active') => {
       const dfs = (column: CustomColumnsType[], key: string | undefined) => {
-        if (!column || column.length === 0) {
+        if (!column || column.length === 0)
           return
-        }
+
         column.forEach((columnItem: CustomColumnsType) => {
           const currentKey = key || columnItem?.groupName || '基本配置'
 
           if (!columnItem.children || columnItem.children?.length === 0) {
             if (type === 'active') {
-              if (propsActiveList.value[currentKey]) {
+              if (propsActiveList.value[currentKey])
                 propsActiveList.value[currentKey].push(columnItem.dataIndex)
-              } else {
+              else
                 propsActiveList.value[currentKey] = [columnItem.dataIndex]
-              }
-            } else if (type === 'default') {
-              if (propsDefaultList.value[currentKey]) {
-                propsDefaultList.value[currentKey].push(columnItem.dataIndex)
-              } else {
-                propsDefaultList.value[currentKey] = [columnItem.dataIndex]
-              }
             }
-
-          } else {
+            else if (type === 'default') {
+              if (propsDefaultList.value[currentKey])
+                propsDefaultList.value[currentKey].push(columnItem.dataIndex)
+              else
+                propsDefaultList.value[currentKey] = [columnItem.dataIndex]
+            }
+          }
+          else {
             dfs(columnItem.children, columnItem.groupName)
           }
         })
@@ -259,7 +262,7 @@ const ColumnsSetting = defineComponent({
     }
 
     function mergeActiveAndSelect() {
-      Object.keys(groupCheckedList.value).forEach(key => {
+      Object.keys(groupCheckedList.value).forEach((key) => {
         groupCheckedList.value[key] = Array.from(new Set([
           ...alwaysShowList.value[key] || [],
           ...propsActiveList.value[key] || []]))
@@ -302,7 +305,7 @@ const ColumnsSetting = defineComponent({
     }
 
     function resetDefaultSelect() {
-      Object.keys(groupCheckedList.value).forEach(key => {
+      Object.keys(groupCheckedList.value).forEach((key) => {
         groupCheckedList.value[key] = Array.from(new Set([
           ...alwaysShowList.value[key] || [],
           ...propsDefaultList.value[key] || []]))
@@ -316,22 +319,21 @@ const ColumnsSetting = defineComponent({
     function confirmConfig(type: 'save' | 'confirm') {
       const { finalColumns, finalData } = dragSortRef.value.getFinalData() || {}
 
-      if (type === 'save') {
+      if (type === 'save')
         emit('save', finalColumns, finalData)
-      } else if (type === 'confirm') {
+      else if (type === 'confirm')
         emit('confirm', finalColumns, finalData)
-      }
     }
     function getColumnsConfig() {
       const { finalColumns, finalData } = dragSortRef.value?.getFinalData() || {}
       return {
         finalColumns,
-        finalData
+        finalData,
       }
     }
 
     expose({
-      getColumnsConfig
+      getColumnsConfig,
     })
 
     return () =>
@@ -357,10 +359,10 @@ const ColumnsSetting = defineComponent({
                   suffix: () => <SearchOutlined />,
                 }}
               </Input>
-              {props.customList && Object.values(props.customList).length !== 0 && props.customListTitle &&
-              <div class={'columns-reset-title'}>{props.customListTitle}</div>}
-              {props.customList && Object.values(props.customList).length !== 0 &&
-                <Card class={'columns-card'}>
+              {props.customList && Object.values(props.customList).length !== 0 && props.customListTitle
+              && <div class={'columns-reset-title'}>{props.customListTitle}</div>}
+              {props.customList && Object.values(props.customList).length !== 0
+                && <Card class={'columns-card'}>
                   {Object.values(props.customList).map(item =>
                     <Checkbox
                       v-model={[customCheckboxStatus.value[item.key].checked, 'checked']}
@@ -393,8 +395,9 @@ const ColumnsSetting = defineComponent({
                             <Checkbox
                               value={data.dataIndex}
                               disabled={data.alwaysShow}
-                              class={`${(searchValue.value && data.title.includes(searchValue.value)) ?
-                                'active-check-box' : ''}`}
+                              class={`${(searchValue.value && data.title.includes(searchValue.value))
+                                ? 'active-check-box'
+: ''}`}
                             >{data.title}</Checkbox>
                           </Col>)}
                       </Row>

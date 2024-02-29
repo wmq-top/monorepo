@@ -1,6 +1,6 @@
 packages:
   - 'packages/*'
   - 'docs/*'
-  - 'utils/'
+  # - 'utils/'
   # exclude packages that are inside test directories
   - '!**/test/**'

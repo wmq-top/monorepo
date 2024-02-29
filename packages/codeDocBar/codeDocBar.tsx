@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import Clipboard from 'clipboard'
 import { message } from 'ant-design-vue'
-import { getMdRender } from '../../utils/highlightMd'
+import { getMdRender } from '../utils/highlightMd'
 import { defaultProps } from './code-doc-box-const'
 import 'highlight.js/styles/github.css'
 import './code-doc-bar-style.less'
@@ -18,7 +18,7 @@ const CodeDocBox = defineComponent({
     }
 
     message.config({
-      maxCount: 1
+      maxCount: 1,
     })
 
     onMounted(() => {

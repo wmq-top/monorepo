@@ -1,8 +1,9 @@
+/* eslint-disable unicorn/no-new-array */
 import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue'
 import { Input, Tree, message } from 'ant-design-vue'
 import { MinusSquareOutlined, PlusSquareOutlined } from '@ant-design/icons-vue'
 import 'ant-design-vue/dist/antd.css'
-import { TreeConstructor, gethashcode } from '../../utils'
+import { TreeConstructor, gethashcode } from '../utils'
 import { defaultProps, defaultSearchOption, emitsDefined } from './customTree-const'
 import type { CheckNodeType, CustomTreeRef, ExpandNodeType, Key, SelectNodeType } from './customTree-type'
 import './customTree-style.less'

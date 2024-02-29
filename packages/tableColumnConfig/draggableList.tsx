@@ -1,8 +1,11 @@
-import { defineComponent, PropType, TransitionGroup, ref, watch, computed } from 'vue'
+import type { PropType } from 'vue'
+import { TransitionGroup, computed, defineComponent, ref, watch } from 'vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 import { Tooltip } from 'ant-design-vue'
-import { MenuOutlined, CloseOutlined, CaretDownOutlined, CaretRightOutlined,
-  MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
+import {
+  CaretDownOutlined, CaretRightOutlined, CloseOutlined, MenuFoldOutlined,
+  MenuOutlined, MenuUnfoldOutlined,
+} from '@ant-design/icons-vue'
 import type { CustomColumnsType } from './table-column-config-types'
 import './table-columns-config-style.less'
 
@@ -27,7 +30,7 @@ const DraggableList = defineComponent({
   emits: {
     delete: (columns: string, dataIndex: string) => true,
   },
-  // eslint-disable-next-line max-lines-per-function
+
   setup(props, { emit, expose }) {
     const allColumnsRef = ref<CustomColumnsType[]>([])
 
@@ -68,20 +71,21 @@ const DraggableList = defineComponent({
     }
 
     function getFinalData() {
-      const finalColumns = allColumnsRef.value.filter(item => {
+      const finalColumns = allColumnsRef.value.filter((item) => {
         if (item.children && item.children.length !== 0) {
           item.children = groupItemRef.value[item.groupName || '基本配置']
             .filter(data => flatActiveColumns.value?.includes(data.dataIndex))
 
           return item.children.length > 0
-        } else {
+        }
+        else {
           return flatActiveColumns.value?.includes(item.dataIndex)
         }
       })
 
       return {
         finalColumns,
-        finalData: finalColumns.map(item => {
+        finalData: finalColumns.map((item) => {
           if (item.children && item.children.length !== 0) {
             return {
               dataIndex: item.dataIndex,
@@ -101,10 +105,9 @@ const DraggableList = defineComponent({
     })
 
     function generateCollapseRef(columns: CustomColumnsType[]) {
-      columns.forEach(item => {
-        if (item.children && item.children.length !== 0) {
+      columns.forEach((item) => {
+        if (item.children && item.children.length !== 0)
           collapseRef.value[item.groupName || '基本配置'] = true
-        }
       })
     }
     function triggerCollapse(groupName: string, bool: boolean) {
@@ -121,34 +124,33 @@ const DraggableList = defineComponent({
     })
 
     function sortForArr(source: CustomColumnsType[], sortArr: CustomColumnsType[]): CustomColumnsType[] {
-      const result = new Array(source.length).fill(0)
+      const result = Array.from({ length: source.length }).fill(0)
 
       source.forEach((item, index) => {
-        if (sortArr.findIndex(data => data.dataIndex === item.dataIndex) === -1) {
+        if (sortArr.findIndex(data => data.dataIndex === item.dataIndex) === -1)
           result[index] = item
-        }
       })
       let i = 0
 
-      sortArr.forEach(item => {
-        while (result[i] !== 0 && i <= result.length) {
+      sortArr.forEach((item) => {
+        while (result[i] !== 0 && i <= result.length)
           i++
-        }
+
         const groupItem = source.find(data => data.dataIndex === item.dataIndex)
 
-        if (groupItem?.children && groupItem.children.length !== 0) {
+        if (groupItem?.children && groupItem.children.length !== 0)
           result[i] = { ...groupItem, children: sortForArr(groupItem.children, item.children!) }
-        } else {
+        else
           result[i] = groupItem
-        }
+
         i++
       })
 
-      return result.filter((item: CustomColumnsType) => item)
+      return result.filter(item => item) as CustomColumnsType[]
     }
 
     function triggerCollapseAll(bool: boolean) {
-      Object.keys(collapseRef.value).forEach(key => {
+      Object.keys(collapseRef.value).forEach((key) => {
         collapseRef.value[key] = bool
       })
     }
@@ -164,7 +166,7 @@ const DraggableList = defineComponent({
     watch(() => props.activeList, () => {
       propActiveRef.value = JSON.parse(JSON.stringify(props.activeList))
       flatActiveColumns.value = []
-      Object.keys(propActiveRef.value).forEach(item => {
+      Object.keys(propActiveRef.value).forEach((item) => {
         flatActiveColumns.value.push(...propActiveRef.value[item])
       })
     }, {
@@ -186,39 +188,42 @@ const DraggableList = defineComponent({
         <div class={'drag-area-content-item'}>
         <VueDraggableNext list={allColumnsRef.value || []}>
           <TransitionGroup>
-            {allColumnsRef.value.map(element => {
+            {allColumnsRef.value.map((element) => {
               if (propActiveRef.value[element.groupName || '基本配置']?.includes(element.dataIndex) && !element.alwaysShow) {
                 return <div key={element.dataIndex} class={'list-item'} onDragstart={eleOndrag} onDragend={eleEndDrag}>
                   <MenuOutlined class={'drag-grip-icon'} />{element.title}<CloseOutlined class={'close-icon'}
                   onClick={() => deleteColumns(element.groupName || '基本配置', element.dataIndex)}/></div>
-              } else if (element.children && element.children.length !== 0 &&
-                 getMixData(element.children, propActiveRef.value[element.groupName!]).length > 0) {
+              }
+              else if (element.children && element.children.length !== 0
+                 && getMixData(element.children, propActiveRef.value[element.groupName!]).length > 0) {
                 return <div key={element.dataIndex}
                 class={`list-group-item ${collapseRef.value[element.groupName || '基本配置'] ? '' : 'collapse-group'}`}
                 onDragstart={eleOndrag} onDragend={eleEndDrag}>
                 <MenuOutlined class={'drag-grip-icon'} />{element.title}
-                {collapseRef.value[element.groupName || '基本配置'] &&
-                <CaretDownOutlined class={'expand-icon'} onClick={() => triggerCollapse(element.groupName!, false)}/>}
-                {!collapseRef.value[element.groupName || '基本配置'] &&
-                <CaretRightOutlined class={'expand-icon'} onClick={() => triggerCollapse(element.groupName!, true)}/>}
+                {collapseRef.value[element.groupName || '基本配置']
+                && <CaretDownOutlined class={'expand-icon'} onClick={() => triggerCollapse(element.groupName!, false)}/>}
+                {!collapseRef.value[element.groupName || '基本配置']
+                && <CaretRightOutlined class={'expand-icon'} onClick={() => triggerCollapse(element.groupName!, true)}/>}
                   <VueDraggableNext list={groupItemRef.value[element.groupName!] || []}>
                     <TransitionGroup>
-                      {groupItemRef.value[element.groupName! || '基本配置'].map(subItem => {
-                        if (propActiveRef.value[element.groupName! || '基本配置']?.includes(subItem.dataIndex) &&
-                        !subItem.alwaysShow) {
+                      {groupItemRef.value[element.groupName! || '基本配置'].map((subItem) => {
+                        if (propActiveRef.value[element.groupName! || '基本配置']?.includes(subItem.dataIndex)
+                        && !subItem.alwaysShow) {
                           return <div class={'list-sub-item'} key={subItem.dataIndex}
                           onDragstart={eleOndrag} onDragend={eleEndDrag}>
                           <MenuOutlined class={'drag-grip-icon'} />{subItem.title}
                           <CloseOutlined class={'close-icon'}
                           onClick={() => deleteColumns(element.groupName || '基本配置', subItem.dataIndex)}/></div>
-                        } else {
+                        }
+                        else {
                           return <div key={subItem.dataIndex}></div>
                         }
                       })}
                     </TransitionGroup>
                   </VueDraggableNext>
                 </div>
-              } else {
+              }
+              else {
                 return <div key={element.dataIndex}></div>
               }
             })}
