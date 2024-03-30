@@ -1,0 +1,115 @@
+.nt-pdu-selector {
+  width: auto;
+  min-width: 240px;
+  .ant-select-selector {
+    border-radius: 5px !important;
+    border-color: #f2f2f4 !important;
+    box-shadow: none !important;
+    background-color: #f2f2f4 !important;
+  }
+  * {
+    font-weight: 500 !important;
+  }
+}
+.nt-pdu-selector.ant-select-focused {
+  .ant-select-selector {
+    background-color: white !important;
+    border-color:#bccbff !important;
+    box-shadow: 0px 0px 2px 1px rgba(156, 179, 252, 0.4) !important;
+  }
+}
+.ant-cascader-menu-item-active {
+  background-color: #e9edfa !important;
+}
+.ant-cascader-dropdown {
+  border-radius: 6px;
+}
+.ant-cascader-menu-item {
+  padding: 6px 8px 6px 12px !important;
+  .ant-cascader-menu-item-content {
+    width: auto;
+  }
+  .ant-cascader-menu-item-expand-icon {
+    font-size: 10px !important;
+    color: black !important;
+  }
+  .ant-cascader-menu {
+    height: 180px !important;
+  }
+}
+.cascader-label-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .cascader-label-label {
+    margin-right: 3rem;
+  }
+  .cascader-label-favor-icon {
+    padding: 0 0.5rem;
+    transition: all 0.2s linear;
+    &:hover {
+      background-color: #bdccff;
+      border-radius: 4px;
+    }
+  }
+  .cascader-label-favor-leaf-icon {
+    margin-right: 14px;
+  }
+  .cascader-label-disable-icon {
+    display: none;
+  }
+}
+.nt-pdu-selector-content {
+  position: relative;
+  .popover-box-content {
+    position: absolute;
+    min-width: 180px; 
+    top: 46px;
+    background-color: white;
+    border-radius: 6px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  }
+  .hidden-box-content {
+    height: 0;
+    overflow: hidden;
+  }
+  .popover-mode-select {
+    position: relative;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1110;
+    .ant-radio-group {
+      .ant-radio-wrapper {
+        height: 16px !important;
+      }
+      .ant-radio-inner {
+        border-color: #7897ff;
+      }
+      .ant-radio-wrapper-checked {
+        .ant-radio-inner {
+          background-color: #6589ff;
+        }
+      }
+    }
+  }
+  .popover-box-contain {
+    width: auto;
+    height: auto;
+    position: relative;
+    .ant-cascader-dropdown {
+      position: relative;
+      top: 0 !important;
+      left: 0 !important;
+      box-shadow: none;
+      z-index: 1100;
+    }
+  }
+}
+
